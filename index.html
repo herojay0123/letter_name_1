@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div id="logo">T3</div>
+        <button id="backButton" style="display: none;">Back</button>
+    </header>
+    <div id="homePage">
+        <h1>Tic Tac Toe</h1>
+        <button id="playButton">Play</button>
+    </div>
+    <div id="modePage" style="display: none;">
+        <h1>Choose Game Mode</h1>
+        <div id="modeMenu">
+            <label for="gameMode">Select Mode:</label>
+            <select id="gameMode">
+                <option value="pvp">Player vs Player</option>
+                <option value="pvai">Player vs AI</option>
+            </select>
+        </div>
+        <button id="startButton">Start Game</button>
+    </div>
+    <div id="gamePage" style="display: none;">
+        <h1>Tic Tac Toe</h1>
+        <div id="board">
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+        </div>
+        <div id="status"></div>
+        <button id="reset">Reset</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
