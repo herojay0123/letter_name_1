@@ -73,6 +73,9 @@ h1 {
 #modeMenu {
     margin: 20px 0;
     font-size: 1.2em;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
 }
 
 #gameMode {
@@ -85,7 +88,7 @@ h1 {
     cursor: pointer;
 }
 
-#playButton, #startButton {
+#playButton, #startButton, #modePVP, #modePVAI {
     background-color: #4a90e2;
     color: white;
     border: none;
@@ -97,7 +100,7 @@ h1 {
     margin: 20px 0;
 }
 
-#playButton:hover, #startButton:hover {
+#playButton:hover, #startButton:hover, #modePVP:hover, #modePVAI:hover {
     background-color: #357abd;
 }
 

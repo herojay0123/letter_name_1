@@ -3,9 +3,9 @@ const modePage = document.getElementById('modePage');
 const gamePage = document.getElementById('gamePage');
 
 const playButton = document.getElementById('playButton');
-const startButton = document.getElementById('startButton');
-const gameModeSelect = document.getElementById('gameMode');
 const backButton = document.getElementById('backButton');
+const modePvPButton = document.getElementById('modePVP');
+const modePvAIButton = document.getElementById('modePVAI');
 
 const cells = document.querySelectorAll('[data-cell]');
 const status = document.getElementById('status');
@@ -15,6 +15,7 @@ let currentPlayer;
 let board;
 let isGameActive;
 let isAI;
+let selectedMode = 'pvp';
 
 const winningCombinations = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -22,27 +23,48 @@ const winningCombinations = [
     [0, 4, 8], [2, 4, 6]
 ];
 
-playButton.addEventListener('click', () => {
-    homePage.style.display = 'none';
-    modePage.style.display = 'block';
-    backButton.style.display = 'block';
-});
+if (playButton && homePage && modePage && backButton) {
+    playButton.addEventListener('click', () => {
+        homePage.style.display = 'none';
+        modePage.style.display = 'block';
+        backButton.style.display = 'block';
+    });
+}
 
-startButton.addEventListener('click', () => {
-    isAI = gameModeSelect.value === 'pvai';
-    modePage.style.display = 'none';
-    gamePage.style.display = 'block';
-    startGame();
-});
+// Start directly when choosing a mode
 
-resetButton.addEventListener('click', startGame);
+if (resetButton) {
+    resetButton.addEventListener('click', startGame);
+}
 
-backButton.addEventListener('click', () => {
-    homePage.style.display = 'block';
-    modePage.style.display = 'none';
-    gamePage.style.display = 'none';
-    backButton.style.display = 'none';
-});
+if (backButton && homePage && modePage && gamePage) {
+    backButton.addEventListener('click', () => {
+        homePage.style.display = 'block';
+        modePage.style.display = 'none';
+        gamePage.style.display = 'none';
+        backButton.style.display = 'none';
+    });
+}
+
+if (modePvPButton && modePage && gamePage) {
+    modePvPButton.addEventListener('click', () => {
+        selectedMode = 'pvp';
+        isAI = false;
+        modePage.style.display = 'none';
+        gamePage.style.display = 'block';
+        startGame();
+    });
+}
+
+if (modePvAIButton && modePage && gamePage) {
+    modePvAIButton.addEventListener('click', () => {
+        selectedMode = 'pvai';
+        isAI = true;
+        modePage.style.display = 'none';
+        gamePage.style.display = 'block';
+        startGame();
+    });
+}
 
 function startGame() {
     board = Array(9).fill(null);
