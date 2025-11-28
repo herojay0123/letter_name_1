@@ -16,6 +16,7 @@ let board;
 let isGameActive;
 let isAI;
 let selectedMode = 'pvp';
+let startingPlayer = 'X';
 
 const winningCombinations = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -50,6 +51,7 @@ if (modePvPButton && modePage && gamePage) {
     modePvPButton.addEventListener('click', () => {
         selectedMode = 'pvp';
         isAI = false;
+        startingPlayer = 'X';
         modePage.style.display = 'none';
         gamePage.style.display = 'block';
         startGame();
@@ -60,6 +62,7 @@ if (modePvAIButton && modePage && gamePage) {
     modePvAIButton.addEventListener('click', () => {
         selectedMode = 'pvai';
         isAI = true;
+        startingPlayer = 'X';
         modePage.style.display = 'none';
         gamePage.style.display = 'block';
         startGame();
@@ -69,7 +72,10 @@ if (modePvAIButton && modePage && gamePage) {
 function startGame() {
     board = Array(9).fill(null);
     isGameActive = true;
-    currentPlayer = 'X';
+    currentPlayer = startingPlayer;
+    if (isAI) {
+        startingPlayer = startingPlayer === 'X' ? 'O' : 'X';
+    }
     status.textContent = `${currentPlayer}'s turn`;
     cells.forEach(cell => {
         cell.textContent = '';
